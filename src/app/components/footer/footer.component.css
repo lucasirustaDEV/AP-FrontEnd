@@ -1,0 +1,15 @@
+.row{
+    background-color: cadetblue;
+    margin: 0;
+}
+footer{
+    color: #fefefe;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.copyleft {
+    display:inline-block;
+    transform: rotate(180deg);
+  }

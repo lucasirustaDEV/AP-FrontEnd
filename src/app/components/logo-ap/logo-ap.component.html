@@ -8,8 +8,9 @@
       <a href=""><img src="../../../assets/github.png" id="twitter" /></a>
       <a href=""><img src="../../../assets/twitter.png" id="instagram" /></a>
       <a href=""><img src="../../../assets/instagram.png" id="github" /></a>
-      <a href=""><img src="../../../assets/facebook.png" id="facebook" /></a>
-      <button type="button" class="btn btn-outline-light">Ingreso</button>
+      <a href="www.facebook.com/lucasirusta"><img src="../../../assets/facebook.png" id="facebook" /></a>
+      <a href="/login"><button type="button" class="btn btn-outline-light" *ngIf="!isLogged">Ingreso</button></a>
+      <button type="button" class="btn btn-outline-light" (click)="onLogOut()" *ngIf="isLogged">Cerrar Sesión</button>
     </div>
   </div>
 </div>

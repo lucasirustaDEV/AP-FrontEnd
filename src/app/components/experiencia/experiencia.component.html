@@ -1,43 +1,33 @@
 <div class="row">
   <h1>Experiencia Laboral</h1>
-  <!--Agrega una columna vacía de bootstrap-->
+  <div class="col-lg-2">
+    <button class="btn btn-dark" type="button" routerLink="/nuevaexp" *ngIf="isLogged">
+      Nueva experiencia
+    </button>
+  </div>
   <div class="col-lg-1"></div>
   <div class="col-lg-11">
-    <ul>
-      <li>
-        <h1>Trabajo 01</h1>
-        -
-        <h3>(Years)</h3>
-      </li>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ipsa
-        aliquid iusto, voluptas unde vitae dolores earum voluptatem nobis
-        expedita nam et enim quas nihil voluptatibus non est sed assumenda?
-      </p>
-    </ul>
-    <ul>
-      <li>
-        <h1>Trabajo 02</h1>
-        -
-        <h3>(Years)</h3>
-      </li>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ipsa
-        aliquid iusto, voluptas unde vitae dolores earum voluptatem nobis
-        expedita nam et enim quas nihil voluptatibus non est sed assumenda?
-      </p>
-    </ul>
-    <ul>
-      <li>
-        <h1>Trabajo 03</h1>
-        -
-        <h3>(Years)</h3>
-      </li>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ipsa
-        aliquid iusto, voluptas unde vitae dolores earum voluptatem nobis
-        expedita nam et enim quas nihil voluptatibus non est sed assumenda?
-      </p>
-    </ul>
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let Experiencia of expe">
+          <td><h2>{{Experiencia.nombreE}}</h2></td>
+          <td>{{Experiencia.descripcionE}}</td>
+          <td *ngIf="isLogged">
+            <button class="btn btn-light" routerLink="/editexp/{{Experiencia.id}}">
+              <i class="bi bi-pencil-fill"></i>Editar
+            </button>
+          </td>
+          <td *ngIf="isLogged">
+            <button class="btn btn-danger" (click)="delete(Experiencia.id)">
+              <i class="bi bi-x-circle-fill"></i>Borrar
+            </button>
+          </td>        
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+
+
+  
 </div>

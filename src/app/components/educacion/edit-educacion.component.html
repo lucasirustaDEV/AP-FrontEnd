@@ -10,6 +10,16 @@
                     <label for="descripcionE">Descripcion Estudios</label>
                     <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="educacion.descripcionE" required>
                 </div>
+                <div class="form-group">
+                    <label for="desde">Período desde</label>
+                    <input type="text" class="form-control" id="desde" name="desde" [(ngModel)]="educacion.desde" required>
+                    <label for="hasta">hasta</label>
+                    <input type="text" class="form-control" id="hasta" name="hasta" [(ngModel)]="educacion.hasta" required>
+                </div>
+                <div class="form-group">
+                    <label for="imglogo">Logo de la Institución</label>
+                    <input type="text" class="form-control" id="imglogo" name="imglogo" [(ngModel)]="educacion.imglogo" required>
+                </div>
                 <button class="btn btn-primary">
                     Editar educación
                 </button>

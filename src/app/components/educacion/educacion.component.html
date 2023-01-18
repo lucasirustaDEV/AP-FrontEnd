@@ -1,3 +1,39 @@
+<div class="container">
+  <div class="row card mat-card seccion">
+    <div class="cabecera">
+      <h2 class="col-auto" id="educacion">Educación</h2>
+      <button class="btn btn-primary btn-agregar" type="button" routerLink="/nuevaedu" *ngIf="isLogged" >
+        Agregar
+      </button>
+    </div>
+
+    <div class="items" *ngFor="let Educacion of edu">
+      <div class="titulo">
+        <h4>
+          {{Educacion.nombreE}}
+        </h4>
+        <div>
+          <td *ngIf="isLogged">
+            <button class="btn btn-success" routerLink="/editedu/{{Educacion.id}}">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+          <td *ngIf="isLogged">
+            <button class="btn btn-danger" (click)="delete(Educacion.id)">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </td>
+        </div>
+      </div>
+      <p >({{Educacion.hasta}} - {{Educacion.hasta}})</p>
+      <p>
+        {{Educacion.descripcionE}}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ANTIGUO DISEÑO EDUCACION ///////////////////
 <div class="row">
   <h1>Educación</h1>
   <div class="col-lg-2">
@@ -26,3 +62,4 @@
       </tbody>
     </table>
   </div>
+//////////////////////////////////////////-->

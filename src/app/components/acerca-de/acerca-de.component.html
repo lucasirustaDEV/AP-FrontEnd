@@ -1,21 +1,67 @@
+<div class="container">
+<div class="img row" id="banner" ><img src="../../../assets/banner.png" class="" alt="" id="banner"></div>
+<!--<div class="img" id="banner" style="background-image: url(assets/banner.png); height: 350px; background-size: cover;"></div>-->
+<div class="card social-prof perfil">
+  <div class="row">  
+  <div class="card-body col-lg-6">
+        <div class="wrapper">
+            <img src="../../../assets/perfilFoto.JPG" alt="" class="user-profile">
+            <h3>{{perso.nombre}} {{perso.apellido}}</h3>
+            <p>{{perso.ocupacion}}</p>
+
+        </div>
+
+    </div>
+    <div class="card col-lg-6 acerca">
+    <div class="card-header">Sobre mi...</div>
+    <div class="card-body ">
+      <p class="card-text lead">{{perso.acerca}}.
+      </p>
+
+    </div>
+    <div class="card-footer titulo">
+      <div class="col-6">
+          <div class="social-info" style="text-align: left; ">
+              <i class="bi bi-envelope-at mr-2"></i>
+              <span> {{perso.mail}}</span>
+          </div>
+      </div>
+      <div class="col-6">
+          <div class="social-info" style="text-align: right;">
+              <i class="bi bi-geo-alt mr-2"></i>
+              <span>Córdoba, Argentina</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <button class="btn btn-primary btn-agregar" type="button" routerLink="/editperfil/1" *ngIf="isLogged">
+      Editar Perfil
+    </button>
+</div>
+</div>
+
+
+<!-- ANTIGUO FORMATO ACERCA /////////////////
 <div class="row">
-    <div class="col-lg-2">
+    <div class="col-lg-6">
         <button class="btn btn-primary" type="button" routerLink="/editperfil/1" *ngIf="isLogged">
           Editar Perfil
         </button>
     </div>
 
     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <img src={{persona.imgperfil}} class="img-fluid" id="fotodeperfil">
+        <img src="../../../assets/perfilFoto.JPG" class="img-fluid" id="fotodeperfil">
     </div>
     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <p id="nombre">{{persona.nombre}} {{persona.apellido}}</p>
+        <p id="nombres">{{perso.nombre}} {{perso.apellido}}</p>
         <p>Full Stack Developer Jr</p>
     </div>
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <span>
             <h1>Acerca de mí</h1>
-            <p>{{persona.acerca}}</p>
+            <p>{{perso.acerca}}</p>
         </span>
     </div>
 </div>
+//////////////////////////////////////-->

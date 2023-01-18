@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
 
+  /*URL: 'https://ap-backend-production.up.railway.app/'*/
   URL: 'http://localhost:8080/'
 
 

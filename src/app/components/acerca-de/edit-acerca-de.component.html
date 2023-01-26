@@ -1,59 +1,79 @@
-<body>
+
     <div class="container" *ngIf="persona">
-        <div class="row">
-            <div>
-                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-                    <div class="form-group">
+        <div class="row card mat-card seccion">
+            <div class="cabecera">
+                <h4 class="col-auto" id="perfil">Editar Perfil</h4>
+            </div>
+            <div class="items">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="row g-3">
+                    <div class="col-md-6 form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="persona.nombre" required>
                     </div>
-                    <div class="form-group">
+                    <div class="col-md-6 form-group">
                         <label for="apellido">Apellido</label>
                         <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="persona.apellido" required>
                     </div>
-                    <div class="form-group date">
+                    <div class="form-group col-md-6">
+                      <label for="ocupacion">Ocupación</label>
+                      <input type="text" class="form-control" id="ocupacion" name="ocupacion" [(ngModel)]="persona.ocupacion" required>
+                  </div>
+                    <div class="form-group col-md-6">
+                      <label for="mail">Dirección de mail</label>
+                      <input type="mail" class="form-control" id="mail" name="mail" [(ngModel)]="persona.mail" required>
+                  </div>
+                  <div class="form-group col-12">
+                    <label for="acerca">Acerca de...</label>
+                    <input type="text" class="form-control" id="acerca" name="acerca" [(ngModel)]="persona.acerca" required>
+                </div>
+                    <div class="form-group date col-md-3">
                         <label for="fechaNac">Fecha de Nacimiento</label>
-                        <input type="text" class="form-control" id="fechaNac" name="fechaNac" [(ngModel)]="persona.fechaNac" required>
+                        <input type="date" class="form-control" id="fechaNac" name="fechaNac" [(ngModel)]="persona.fechaNac" (change)="actualizarEdad()" required>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label for="edad">Edad</label>
+                        <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="persona.edad" required disabled readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="ubicacion">Provincia</label>
+                      <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="persona.idDomicilio" required>
+                  </div>
+                    <div class="form-group col-md-4">
+                        <label for="ubicacion">Ciudad</label>
+                        <select id="ubicacion" class="form-select">
+                          <option selected>Seleccionar...</option>
+                          <option>...</option>
+                        </select>
                     </div>
 
 
-
-
-
-                    <div class="form-group">
-                        <label for="ubicacion">Domicilio</label>
-                        <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="persona.idDomicilio" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mail">Dirección de mail</label>
-                        <input type="text" class="form-control" id="mail" name="mail" [(ngModel)]="persona.mail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ocupacion">Ocupación</label>
-                        <input type="text" class="form-control" id="ocupacion" name="ocupacion" [(ngModel)]="persona.ocupacion" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="acerca">Acerca de...</label>
-                        <input type="text" class="form-control" id="acerca" name="acerca" [(ngModel)]="persona.acerca" required>
-                    </div>
                     
-                    <div class="form-group">
-                        <label for="imgperfil">Link Imagen de Perfil</label>
-                        <input type="file" class="form-control" id="imgperfil" name="imgperfil" [(ngModel)]="persona.imgperfil" (change)="uploadImage($event)"
+                    <div class="form-group col-md-8">
+                        <label for="imgperfil">Cambiar Imagen de Perfil</label>
+                         <!--<input type="file" class="form-control" id="imgperfil" name="imgperfil" (change)="uploadImage($event, 'perfil')" -->
+                        <input type="file" class="form-control" id="imgperfil" name="imgperfil" (change)="mostrarImagen($event)"
                         accept=".jpg, .jpeg, .png">
                     </div>
-                    <div class="form-group">
+                    <!--
+                    <div class="form-group col-md-6">
                         <label for="imgbanner">Link Imagen Banner Superior</label>
-                        <input type="file" class="form-control" id="imgbanner" name="imgbanner" [(ngModel)]="persona.imgBanner" (change)="uploadImage($event)"
+                        <input type="file" class="form-control" id="imgbanner" name="imgbanner" [(ngModel)]="persona.imgBanner" (change)="uploadImage($event, 'banner')"
                         accept=".jpg, .jpeg, .png">
                     </div>
-    
-                    <button class="btn btn-primary">
+                   
+                    <div class="col-md-4 text-center">
+                      <img [src]="persona.imgperfil" width="200px" alt="" class="" id="fotodeperfil">
+                    </div>  
+                     -->
+                    <div class="col-md-4 text-center">
+                        <img [src]="imgUrl" *ngIf="imgUrl" width="200px" alt="" class="" id="fotodeperfil">
+                      </div>  
+                      <button class="btn btn-primary">
                         Editar perfil
                     </button>
                 </form>
+
             </div>
         </div>
     </div>
-        
-</body>
+     

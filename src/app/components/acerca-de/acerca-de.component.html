@@ -5,7 +5,7 @@
   <div class="row">  
   <div class="card-body col-lg-6">
         <div class="wrapper">
-            <img src="../../../assets/perfilFoto.JPG" alt="" class="user-profile">
+            <img src={{perso.imgperfil}} alt="" class="user-profile">
             <h3>{{perso.nombre}} {{perso.apellido}}</h3>
             <p>{{perso.ocupacion}}</p>
 
@@ -15,7 +15,7 @@
     <div class="card col-lg-6 acerca">
     <div class="card-header">Sobre mi...</div>
     <div class="card-body ">
-      <p class="card-text lead">{{perso.acerca}}.
+      <p class="card-text lead">{{perso.acerca}}
       </p>
 
     </div>
@@ -23,7 +23,7 @@
       <div class="col-6">
           <div class="social-info" style="text-align: left; ">
               <i class="bi bi-envelope-at mr-2"></i>
-              <span> {{perso.mail}}</span>
+              <span> {{perso.mail}} {{perso.fechaNac}} {{perso.edad}}</span>
           </div>
       </div>
       <div class="col-6">
@@ -34,10 +34,11 @@
       </div>
     </div>
   </div>
+  <button class="btn btn-primary btn-agregar" type="button" routerLink="/editperfil/1" *ngIf="isLogged">
+    Editar Perfil
+  </button>
 </div>
-    <button class="btn btn-primary btn-agregar" type="button" routerLink="/editperfil/1" *ngIf="isLogged">
-      Editar Perfil
-    </button>
+
 </div>
 </div>
 

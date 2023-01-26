@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row card mat-card seccion">
+        <div class="cabecera">
+            <h4 class="col-auto" id="perfil">Agregar Proyecto</h4>
+        </div>
+
+        <div class="items">
+            <form form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+            <div class="row g-0 rounded overflow-hidden flex-md-row mb-0 shadow-sm h-md-250 position-relative proyecto">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <div class="form-group mb-3">
+                        <label for="nombre">Nombre del Proyecto</label>
+                        <h3 class="mb-0"><input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required></h3>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="descripcion">Descripción del Proyecto</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Link al Proyecto</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                        <span class="input-group-text" id="link">https://ejemplo.com</span>
+                        </div>
+                        <input type="url" class="form-control card-text mb-auto lead" style="text-align: left;" id="link" name="link" [(ngModel)]="linkproyecto">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+                        <img class="rounded-lg-3 imgproyecto" src="../../../assets/puentezkanviz.png" alt="" width="360">
+                </div>
+
+                
+
+            </div>
+
+</form>
+</div>
+    </div>
+</div>

@@ -4,9 +4,7 @@ body{
     background-color: RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
   }
   
-  .row{
-    margin: 0;
-  }
+
 
   .seccion{
     background-color:  RGBA(33,37,41,var(--bs-bg-opacity,1))!important;

@@ -36,10 +36,18 @@
 -->
 
 <div class="container">
-<div class="row">
-    <h1>Hard & Soft Skills</h1>
+<div class="row card mat-card seccion">
+  <div class="cabecera">
+    <h2 class="col-auto" id="hys">Habilidades</h2>
+    <button class="btn btn-primary btn-agregar" type="button" routerLink="/nuevaedu" *ngIf="isLogged">
+      Agregar
+    </button>
+  </div>
+</div>
+<div class="row seccion">
+     <!--<h1>Hard & Soft Skills</h1>
 
-    <!--<div class="col-lg-2">
+   <div class="col-lg-2">
       <button class="btn btn-dark" type="button" routerLink="/nuevaskill" *ngIf="isLogged">
         Nueva Skill
       </button>
@@ -57,15 +65,28 @@
         [imageWidth]=""
         [showUnits]="false"
         [showSubtitle]="false"
-        [outerStrokeWidth]="12"
-        [innerStrokeWidth]="4"
-        [outerStrokeColor]="'#78C000'"
-        [innerStrokeColor]="'#C7E596'"
+        [outerStrokeWidth]="6"
+        [innerStrokeWidth]="2"
+        [outerStrokeColor]="'#7331F7'"
+        [innerStrokeColor]="'#E226FC'"
         [animation]="true"
         [animationDuration]="900"
         [responsive]="true"
+        [titleColor]="'#FFFFFF'"
       ></circle-progress>
       <div>
+        <td *ngIf="isLogged">
+          <button class="btn btn-success" routerLink="/editskill/{{ skill.id }}">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </td>
+        <td *ngIf="isLogged">
+          <button class="btn btn-danger" (click)="delete(skill.id)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </div>
+      <!--<div>
         <td *ngIf="isLogged">
           <button class="btn btn-light" routerLink="/editskill/{{skill.id}}">
             <i class="bi bi-pencil-fill"></i>Editar
@@ -77,9 +98,8 @@
           </button>
         </td>        
   
-      </div>
+      </div>-->
 </div>
     
 </div>
 </div>
--->

@@ -68,7 +68,7 @@
                     <div class="col-md-4 text-center">
                         <img [src]="imgUrl" *ngIf="imgUrl" width="200px" alt="" class="" id="fotodeperfil">
                       </div>  
-                      <button class="btn btn-primary">
+                      <button class="btn btn-primary" [disabled]="isDisabled">
                         Editar perfil
                     </button>
                 </form>

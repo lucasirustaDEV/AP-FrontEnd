@@ -11,9 +11,12 @@ import { PersonaService } from 'src/app/service/persona.service';
 })
 
 export class EditAcercaDeComponent implements OnInit {
+
   persona: persona = null;
 
   imgUrl: string = "";
+
+  isDisabled = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,13 +42,12 @@ export class EditAcercaDeComponent implements OnInit {
   onUpdate(): void{
 
     const id = this.activatedRoute.snapshot.params['id'];
-    
+
     console.log(this.imagenService.url);
 
     if (this.imagenService.url !== ""){
       this.persona.imgperfil = this.imagenService.url;
-    }
-    
+    }  
     
     this.persona.fechaNac = new Date(this.persona.fechaNac);
     this.persona.fechaNac.setMinutes(this.persona.fechaNac.getMinutes() + this.persona.fechaNac.getTimezoneOffset());
@@ -93,13 +95,13 @@ export class EditAcercaDeComponent implements OnInit {
     const archivoImg = fechaHora.getFullYear().toString() + fechaHora.getMonth().toString() + fechaHora.getDay().toString()
                       + fechaHora.getHours().toString() + fechaHora.getMinutes().toString() + fechaHora.getSeconds().toString();
     const nombre = seccion + "_" + archivoImg;
-  
-    this.imagenService.uploadImage($event, nombre);
+    
+    this.imagenService.subirArchivo($event, nombre);
+    /*this.imagenService.uploadImage($event, nombre);*/
     /*this.imgUrl = this.imagenService.url;
     console.log(this.imgUrl);
     this.persona.imgperfil = this.imagenService.url;*/
   }
-
 
 
 }

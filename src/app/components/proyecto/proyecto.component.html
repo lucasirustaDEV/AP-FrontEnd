@@ -7,29 +7,32 @@
         Agregar
       </button>
     </div>
-  
+
     <div class="items" *ngFor="let Proyecto of proy">
-      <div class="row g-0 rounded overflow-hidden flex-md-row mb-0 shadow-sm h-md-250 position-relative proyecto">
+      <div>
+        <td *ngIf="isLogged">
+          <button class="btn btn-success" routerLink="/editproy/{{Proyecto.id}}">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </td>
+        <td *ngIf="isLogged">
+          <button class="btn btn-danger" (click)="delete(Proyecto.id)">
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </div>
+        <div class="row g-0 rounded overflow-hidden flex-md-row mb-0 shadow-sm h-md-250 position-relative proyecto">
+
+
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary"></strong>
           <h3 class="mb-0">{{Proyecto.nombre}}</h3>
           <p class="card-text mb-auto lead" style="text-align: left;">{{Proyecto.descripcion}}</p>
-          <div>
-            <td *ngIf="isLogged">
-              <button class="btn btn-success" routerLink="/editproy/{{Proyecto.id}}">
-                <i class="bi bi-pencil"></i>
-              </button>
-            </td>
-            <td *ngIf="isLogged">
-              <button class="btn btn-danger" (click)="delete(Proyecto.id)">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </td>
-          </div>
+
         </div>
         <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <a href="">
-          <img class="rounded-lg-3 imgproyecto" src="../../../assets/puentezkanviz.png" alt="" width="360">
+          <a href={{Proyecto.linkproyecto}}>
+          <img class="rounded-lg-3 imgproyecto" src={{Proyecto.imgproyecto}} alt="" width="480">
         </a>
       </div>
       </div>

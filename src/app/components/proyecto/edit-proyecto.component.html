@@ -5,16 +5,16 @@
         </div>
 
         <div class="items">
-            <form form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
                 <div class="row g-0 rounded overflow-hidden flex-md-row mb-0 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <div class="form-group mb-3">
                             <label for="nombre">Nombre del Proyecto</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required />
+                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="proyecto.nombre" required>
                         </div>
                         <div class="form-group mb-3">
                             <label for="descripcion">Descripción del Proyecto</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcion" required></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label for="imgproyecto">Cargar Imagen del Proyecto</label>
@@ -24,7 +24,7 @@
                             <label for="link">Link al Proyecto</label>
                             <div class="input-group mb-3">
                                 <input type="url" class="form-control card-text mb-auto lead" style="text-align: left"
-                                    id="link" name="link" [(ngModel)]="linkproyecto" placeholder="http://ejemplo.com"/>
+                                    id="link" name="link" [(ngModel)]="proyecto.linkproyecto" placeholder="http://ejemplo.com"/>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
  
                 </div>
                 <button class="btn btn-primary mb-3">
-                    Agregar
+                    Modificar
                 </button>
             </form>
 

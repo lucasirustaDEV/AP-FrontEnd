@@ -1,51 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Proyecto } from 'src/app/models/proyecto';
-import { ImagenService } from 'src/app/service/imagen.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
+import { ImagenService } from 'src/app/service/imagen.service';
 
 @Component({
-  selector: 'app-new-proyecto',
-  templateUrl: './new-proyecto.component.html',
-  styleUrls: ['./new-proyecto.component.css']
+  selector: 'app-edit-proyecto',
+  templateUrl: './edit-proyecto.component.html',
+  styleUrls: ['./edit-proyecto.component.css']
 })
-export class NewProyectoComponent implements OnInit {
+export class EditProyectoComponent implements OnInit {
 
-  nombre: string;
-  descripcion: string;
-  imgproyecto: string;
-  linkproyecto: string;
+  proyecto: Proyecto = null;
 
   imgUrl: string = "";
 
-  link: string = "https://firebasestorage.googleapis.com/v0/b/portfolio-lucas-ap.appspot.com/o/imagenes%2F_20230518210?alt=media&token=db593c97-2118-40ed-b8ca-05940a809f2a";
- 
-
   constructor(
-    private proyectoS: ProyectoService, 
-    private router: Router,
+    private proyectoS: ProyectoService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     public imagenService: ImagenService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-  }
-
-  contar(){
-    console.log(this.link.length);
-  }
-
-  onCreate(){
-    console.log(this.imagenService.url)
-    console.log(this.imagenService.url.length)
-    this.imgproyecto = this.imagenService.url;
-    const proyecto = new Proyecto(this.nombre, this.descripcion, this.imgproyecto, this.linkproyecto);
-    this.proyectoS.save(proyecto).subscribe(
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.proyectoS.detail(id).subscribe(
       data => {
-        alert("Proyecto agregado");
-        this. router.navigate(['']);
+        this.proyecto = data;
+        this.imgUrl = this.proyecto.imgproyecto;
       }, err => {
-        alert("falló");
+        alert("Error al modificar");
+        this.router.navigate(['']);
+      }
+    )
+  }
+
+  onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+
+    if (this.imagenService.url !== ""){
+      this.proyecto.imgproyecto = this.imagenService.url;
+    }  
+
+    this.proyectoS.update(id, this.proyecto).subscribe(
+      data => {
+        this.router.navigate(['']);
+      }, err => {
+        alert("Error al modificar proyecto");
         this.router.navigate(['']);
       }
     )

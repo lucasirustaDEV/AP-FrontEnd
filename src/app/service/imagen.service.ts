@@ -35,7 +35,12 @@ export class ImagenService {
   }
 
 
-subirArchivo($event: any, nombre: string){
+subirArchivo($event: any, seccion: string){
+
+  const fechaHora = new Date();
+  const archivoImg = fechaHora.getFullYear().toString() + fechaHora.getMonth().toString() + fechaHora.getDay().toString()
+                    + fechaHora.getHours().toString() + fechaHora.getMinutes().toString() + fechaHora.getSeconds().toString();
+  const nombre = seccion + "_" + archivoImg;
   /*const storage = getStorage();*/
 
   const file = $event.target.files[0];
@@ -81,7 +86,6 @@ uploadTask.on('state_changed',
     // Upload completed successfully, now we can get the download URL
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
       console.log('File available at', downloadURL);
-      console.log('Largo url', downloadURL.length);
       this.url = downloadURL;
     });
   }

@@ -12,7 +12,14 @@ export class EducacionComponent implements OnInit {
 
   edu: Educacion[] = [];
 
-  constructor(private educacionS: EducacionService, private tokenService: TokenService) { }
+  anioDesde: string = "";
+  anioHasta: string = "";
+
+  constructor(
+    private educacionS: EducacionService, 
+    private tokenService: TokenService
+  ) { }
+
   isLogged = false;
 
   ngOnInit(): void {
@@ -33,6 +40,8 @@ export class EducacionComponent implements OnInit {
   }
 
   delete(id?: number) {
+    var resultado = window.confirm('¿Está seguro de eliminar el ítem?');
+    if (resultado === true) {
     if(id != undefined) {
       this.educacionS.delete(id).subscribe(
         data => {
@@ -42,6 +51,8 @@ export class EducacionComponent implements OnInit {
         }
       )
     }
+    }
+
   }
 
 }

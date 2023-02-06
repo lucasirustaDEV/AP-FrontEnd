@@ -1,28 +1,48 @@
-<div class="container" *ngIf="educacion">
-    <div class="row">
-        <div>
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
-                <div class="form-group">
-                    <label for="nombreE">NombreInstitución</label>
-                    <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="educacion.nombreE" required>
+<div class="container shadow min-vh-100 py-2" *ngIf="educacion">
+    <div class="row mat-card seccion">
+        <div class="cabecera">
+            <h4 class="col-auto" id="perfil">Modificar Educación</h4>
+        </div>
+        <div class="items">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="row g-3">
+                <div class="form-group col-md-6">
+                    <label for="nombreE">Nombre de la Institución Educativa</label>
+                    <input type="text" class="form-control" id="nombreE" name="nombreE" [(ngModel)]="educacion.nombreE" maxlength="50" required>
                 </div>
-                <div class="form-group">
-                    <label for="descripcionE">Descripcion Estudios</label>
-                    <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="educacion.descripcionE" required>
+                <div class="form-group col-md-2">
+                    <label for="desde">Período desde:</label>
+                    <input type="month" class="form-control" id="desde" name="desde" [(ngModel)]="educacion.desde"  value="2016-02" required>
                 </div>
-                <div class="form-group">
-                    <label for="desde">Período desde</label>
-                    <input type="text" class="form-control" id="desde" name="desde" [(ngModel)]="educacion.desde" required>
-                    <label for="hasta">hasta</label>
-                    <input type="text" class="form-control" id="hasta" name="hasta" [(ngModel)]="educacion.hasta" required>
+                <div class="form-group col-md-2">
+                    <label for="hasta">Período hasta:</label>
+                    <input type="month" class="form-control" id="hasta" name="hasta" [(ngModel)]="educacion.hasta" value="2016-02" required>
                 </div>
+
+                <div class="form-group col-md-2 checkbox">
+
+                    <label ><input type="checkbox" value=""> Cursando</label>
+
+                  </div>
+
                 <div class="form-group">
+                    <label for="descripcionE">Descripción de los Estudios</label>
+                    <input type="text" class="form-control" id="descripcionE" name="descripcionE" [(ngModel)]="educacion.descripcionE" maxlength="100" required>
+                </div> 
+                <div class="form-group col-md-8">
                     <label for="imglogo">Logo de la Institución</label>
-                    <input type="text" class="form-control" id="imglogo" name="imglogo" [(ngModel)]="educacion.imglogo" required>
+                    <input type="file" class="form-control" id="imglogo" name="imglogo" accept=".jpg, .jpeg, .png" (change)="mostrarImagen($event)">
                 </div>
-                <button class="btn btn-primary">
-                    Editar educación
-                </button>
+                <div class="form-group col-md-4 mx-auto">
+                    <div class="image-area mt-4">
+                    <img id="imglogo" [src]="imgUrl" *ngIf="imgUrl" alt="" width="200px" class="img-fluid rounded shadow-sm mx-auto d-block">
+                    </div>
+                </div>
+                <div>                
+                    <button class="btn btn-primary">
+                        Modificar
+                    </button>
+                </div>
+
             </form>
         </div>
     </div>

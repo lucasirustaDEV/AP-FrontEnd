@@ -8,6 +8,8 @@
     </div>
 
     <div class="items" *ngFor="let Educacion of edu">
+
+      <img src={{Educacion.imglogo}} class="img-thumbnail rounded float-start" width="100px" style="margin-right: 25px; margin-left: 10px;"/>
       <div class="titulo">
         <h4>
           {{Educacion.nombreE}}
@@ -25,10 +27,13 @@
           </td>
         </div>
       </div>
-      <p >({{Educacion.hasta}} - {{Educacion.hasta}})</p>
+
+
+      <p id="fechas">({{Educacion.desde.substring(0, 4)}} - {{Educacion.hasta.substring(0, 4)}})</p>
       <p>
         {{Educacion.descripcionE}}
       </p>
+
     </div>
   </div>
 </div>

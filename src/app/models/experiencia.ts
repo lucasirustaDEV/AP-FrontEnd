@@ -3,12 +3,12 @@ export class Experiencia {
     nombreE : string;
     descripcionE : string;
     tareas : string;
-    desde : number;
-    hasta : number;
+    desde : string;
+    hasta : string;
     imglogo : string;
 
 
-    constructor(nombreE: string, descripcionE: string, tareas: string, desde: number, hasta: number, imglogo: string) {
+    constructor(nombreE: string, descripcionE: string, tareas: string, desde: string, hasta: string, imglogo: string) {
         this.nombreE = nombreE;
         this.descripcionE = descripcionE;
         this.tareas = tareas;

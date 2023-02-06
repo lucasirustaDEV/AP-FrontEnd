@@ -9,6 +9,9 @@
   </div>
 
   <div class="items"  *ngFor="let Experiencia of expe">
+
+    <img src={{Experiencia.imglogo}} class="img-thumbnail rounded float-start" width="100px" style="margin-right: 25px; margin-left: 10px;"/>
+
     <div class="titulo">
       <h4>
         {{Experiencia.descripcionE}}
@@ -27,7 +30,7 @@
       </div>
     </div>
     <h5>{{Experiencia.nombreE}}</h5>
-    <p >({{Experiencia.desde}} - {{Experiencia.hasta}})</p>
+    <p >({{Experiencia.desde.substring(0, 4)}} - {{Experiencia.hasta.substring(0, 4)}})</p>
     <p>{{Experiencia.tareas}}</p>
   </div>
 

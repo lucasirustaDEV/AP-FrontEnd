@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -8,6 +8,9 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./logo-ap.component.css']
 })
 export class LogoAPComponent implements OnInit {
+
+  @Input() mostrarBoton: boolean;
+
   isLogged = false;
 
   constructor(private router: Router, private tokenService: TokenService) { }

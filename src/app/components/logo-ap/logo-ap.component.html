@@ -99,8 +99,8 @@
 
         <li>
           <div class="text-end">
-            <button type="button" class="btn btn-success me-2" (click)="login()" *ngIf="!isLogged">Ingresar</button>
-            <button type="button" class="btn btn-success me-2" (click)="onLogOut()" *ngIf="isLogged">Cerrar Sesión</button>
+            <button type="button" class="btn btn-success me-2" (click)="login()" *ngIf="!isLogged && mostrarBoton">Ingresar</button>
+            <button type="button" class="btn btn-success me-2" (click)="onLogOut()" *ngIf="isLogged && mostrarBoton">Cerrar Sesión</button>
           </div>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-
+<app-logo-ap></app-logo-ap>
     <div class="container" *ngIf="persona">
         <div class="row card mat-card seccion">
             <div class="cabecera">
@@ -67,13 +67,15 @@
                      -->
                     <div class="col-md-4 text-center">
                         <img [src]="imgUrl" *ngIf="imgUrl" width="200px" alt="" class="" id="fotodeperfil">
-                      </div>  
-                      <button class="btn btn-primary" [disabled]="isDisabled">
-                        Editar perfil
-                    </button>
+                    </div>  
+                    <div class="text-center">
+                        <button class="btn btn-primary" [disabled]="isDisabled">
+                            Editar perfil
+                        </button>
+                    </div>
                 </form>
 
             </div>
         </div>
     </div>
-     
+<app-footer></app-footer>

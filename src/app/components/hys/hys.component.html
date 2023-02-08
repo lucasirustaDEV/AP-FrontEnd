@@ -1,62 +1,18 @@
-<!--
 <div class="container">
   <div class="row card mat-card seccion">
     <div class="cabecera">
       <h2 class="col-auto" id="hys">Habilidades</h2>
-      <button class="btn btn-primary btn-agregar" type="button" routerLink="/nuevaedu" *ngIf="isLogged">
+      <button class="btn btn-primary btn-agregar" type="button" routerLink="/nuevaskill" *ngIf="isLogged">
         Agregar
       </button>
     </div>
   </div>
-
-      <div class="text-center col-md-4 col-sm-6 col-xs-6 circulo" *ngFor="let skill of skill">
-        <circle-progress [radius]="60" [space]="-10" [outerStrokeGradient]="true" [outerStrokeWidth]="10"
-          [outerStrokeColor]="'#4882c2'" [outerStrokeGradientStopColor]="'#53a9ff'" [innerStrokeColor]="'#e7e8ea'"
-          [innerStrokeWidth]="10" [animateTitle]="false" [animationDuration]="1000" [showUnits]="false"
-          [showBackground]="false" [responsive]="false" [lazy]="true" [percent]="(skill.porcentaje)"
-          [title]="(skill.nombre)" [showTitle]="true" [imageSrc]="''" [showImage]="false" [imageHeight]=""
-          [imageWidth]="" [showUnits]="false" [showSubtitle]="false" [animation]="true"
-          [animationDuration]="900"></circle-progress>
-        <div>
-          <td *ngIf="isLogged">
-            <button class="btn btn-success" routerLink="/editskill/{{ skill.id }}">
-              <i class="bi bi-pencil"></i>
-            </button>
-          </td>
-          <td *ngIf="isLogged">
-            <button class="btn btn-danger" (click)="delete(skill.id)">
-              <i class="bi bi-trash3"></i>
-            </button>
-          </td>
-        </div>
-      </div>
-
-
-</div>
--->
-
-<div class="container">
-<div class="row card mat-card seccion">
-  <div class="cabecera">
-    <h2 class="col-auto" id="hys">Habilidades</h2>
-    <button class="btn btn-primary btn-agregar" type="button" routerLink="/nuevaedu" *ngIf="isLogged">
-      Agregar
-    </button>
-  </div>
-</div>
-<div class="row seccion">
-     <!--<h1>Hard & Soft Skills</h1>
-
-   <div class="col-lg-2">
-      <button class="btn btn-dark" type="button" routerLink="/nuevaskill" *ngIf="isLogged">
-        Nueva Skill
-      </button>
-    </div>-->
+  <div class="row seccion">
 
     <div class="text-center col-sm-4 col-md-4 col-lg-4 circulo" *ngFor="let skill of skill">
         <circle-progress
         [percent]="(skill.porcentaje)"
-        [radius]="80"
+        [radius]="50"
         [title]="(skill.nombre)"
         [showTitle]="true"
         [imageSrc]="''"
@@ -73,6 +29,7 @@
         [animationDuration]="900"
         [responsive]="true"
         [titleColor]="'#FFFFFF'"
+        [titleFontSize]="'10px'"
       ></circle-progress>
       <div>
         <td *ngIf="isLogged">
@@ -86,20 +43,8 @@
           </button>
         </td>
       </div>
-      <!--<div>
-        <td *ngIf="isLogged">
-          <button class="btn btn-light" routerLink="/editskill/{{skill.id}}">
-            <i class="bi bi-pencil-fill"></i>Editar
-          </button>
-        </td>
-        <td *ngIf="isLogged">
-          <button class="btn btn-danger" (click)="delete(skill.id)">
-            <i class="bi bi-x-circle-fill"></i>Borrar
-          </button>
-        </td>        
-  
-      </div>-->
-</div>
+
+    </div>
     
 </div>
 </div>

@@ -30,6 +30,8 @@ export class ExperienciaComponent implements OnInit {
   }
 
   delete(id?: number){
+    var resultado = window.confirm('¿Está seguro de eliminar el ítem?');
+    if (resultado === true) {
     if(id != undefined){
       this.sExperiencia.delete(id).subscribe(
         data => {
@@ -39,6 +41,7 @@ export class ExperienciaComponent implements OnInit {
         }
       )
     }
+  }
   }
 
 }

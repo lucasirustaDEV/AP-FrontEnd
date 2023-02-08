@@ -1,7 +1,10 @@
-<div class="container shadow min-vh-100 py-2">
+<app-logo-ap></app-logo-ap>
+<div class="container shadow py-2">
+
+
     <div class="row mat-card seccion">
         <div class="cabecera">
-            <h4 class="col-auto" id="perfil">Agregar Educación</h4>
+            <h4 class="col-auto" id="perfil">Agregar Experiencia Laboral</h4>
         </div>
         <div class="items">
             <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="row g-3">
@@ -42,7 +45,7 @@
                     <img id="imglogo" [src]="imgUrl" *ngIf="imgUrl" alt="" width="200px" class="img-fluid rounded shadow-sm mx-auto d-block">
                     </div>
                 </div>
-                <div>                
+                <div class="text-center">                
                     <button class="btn btn-primary">
                         Agregar
                     </button>
@@ -51,4 +54,6 @@
             </form>
         </div>
     </div>
+
 </div>
+<app-footer></app-footer>

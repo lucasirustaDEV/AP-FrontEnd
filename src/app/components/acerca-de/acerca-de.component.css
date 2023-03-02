@@ -1,134 +1,91 @@
-body{
-    color: #fff!important;
-    background-color: RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
-  }
-
-/*.row{
-    margin: 0;
-  }*/
-  
-  
-  
-  .social-prof {
-    color: whitesmoke;
-    text-align: center;
-  }
-  
-  .social-prof .wrapper {
-    width: 70%;
-    margin: auto;
-    margin-top: -100px;
-  }
-  
-  .social-prof img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 1px solid #7331F7;
-    z-index: 5;
-    position: relative;
-  }
-  
-  .social-prof h3 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 0;
-  }
-  
-  .social-prof p {
-    font-size: 18px;
-  }
-  
-  
-  .perfil{
-    background-color:  RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
-    margin-bottom: 5px;
-  }
-  
-  #banner{
-    padding: 0;
-    position: relative;
-    border-right: 0px;
-    border-left: 0px;
-    border-radius: var(--bs-card-border-radius);
-    z-index: 1;
-  }
-  
-  #fotodeperfil{
-    border-radius: 50%;
-    max-width: 30%;
-    margin-top: -120px;
-    z-index: 9;
-    position: relative;
-    left: 0px;
-  }
-  
-  .acerca{
-    top: 5px;
-    margin-bottom: 10px;
-    background-color: RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
-    border: 1px solid #E226FC;
-    fill: currentColor;
-    text-align: right;
-  }
-  
-  .card-header{
-    border-color: #E226FC;
-    text-align: center;
-  }
-  
-  .card-text{
-    text-align: center;
-  }
-  
-  .acercapie{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0px; 
-  }
-
-  .titulo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0px;
-  }
-
- 
-
-/*.row{
-    padding: 20px;
-    margin: 0;
-}
-div{
-    background-color: cornflowerblue;
-    text-align: center;
-}
-@media(min-width: 576px){
-    #fotodeperfil{
-        position: absolute;
-        width: 15%;
-        border-radius: 100%;
-        box-shadow: 3px 3px 3px grey;
-        left: 3%;
-        top:600px;
-    }
-}
-@media(max-width: 575px){
-    #fotodeperfil{
-        position: absolute;
-        width: 30%;
-        border-radius: 100%;
-        box-shadow: 3px 3px 3px grey;
-        left: 35%;
-        top:950px;
-    }
+body {
+  color: #fff !important;
+  background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
 }
 
-#nombres{
-    font-weight: bold;
-    margin-top: 30%;
-    margin-left: 10px;
-}*/
+.social-prof {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.social-prof .wrapper {
+  width: 70%;
+  margin: auto;
+  margin-top: -100px;
+}
+
+.social-prof img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 1px solid #7331F7;
+  z-index: 5;
+  position: relative;
+}
+
+.social-prof h3 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.social-prof p {
+  font-size: 18px;
+}
+
+
+.perfil {
+  background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
+  margin-bottom: 5px;
+}
+
+#banner {
+  padding: 0;
+  position: relative;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: var(--bs-card-border-radius);
+  z-index: 1;
+}
+
+#fotodeperfil {
+  border-radius: 50%;
+  max-width: 30%;
+  margin-top: -120px;
+  z-index: 9;
+  position: relative;
+  left: 0px;
+}
+
+.acerca {
+  top: 5px;
+  margin-bottom: 10px;
+  background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
+  border: 1px solid #E226FC;
+  fill: currentColor;
+  text-align: right;
+}
+
+.card-header {
+  border-color: #E226FC;
+  text-align: center;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.acercapie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0px;
+}

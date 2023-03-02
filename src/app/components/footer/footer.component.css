@@ -1,26 +1,16 @@
-.separador{
-    border-bottom: 1px solid #7331F7;
-  }
-  
-  .copyleft {
-    display:inline-block;
-    transform: rotate(180deg);
-  }
+.separador {
+  border-top: 1px solid #7331F7;
+}
 
-/*
-.row{
-    background-color: cadetblue;
-    margin: 0;
+p {
+  padding-top: 20px;
 }
-footer{
-    color: #fefefe;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
+
 .copyleft {
-    display:inline-block;
-    transform: rotate(180deg);
-  }
-*/
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.nav-item :hover {
+  background-color: #7331F7;
+}

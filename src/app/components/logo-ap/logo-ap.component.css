@@ -1,75 +1,29 @@
 .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
-  
-  .text-small {
-    font-size: 85%;
-  }
-  
-  .dropdown-toggle {
-    outline: 0;
-  }
-  
-  .nav-link {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  
-  .text-end {
-    padding-left: 15px;
-  }
-  
-  #logoAP{
-    width: 120px;
-  }
-  
-
-
-/*.row{
-    margin: 0;
-}
-#logoAP{
-    width: 150px;
-}
-img{
-    width: 50px;
-    margin: 0px 3px 0px 0px;
-}
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.redes{
-    margin-right: 0.5em;
-}
-.btn{
-    border-width: medium;
+  vertical-align: -.125em;
+  fill: currentColor;
 }
 
-.btn-circle {
-    /*width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    border-radius: 35px;
-    font-size: 24px;
-    line-height: 1.33;*/
-/*    border-radius: 50px;
+.text-small {
+  font-size: 85%;
 }
 
-/* Para la vista de celular */
-/*
-@media(max-width: 575px){
-.container{
-    flex-direction: column;
+.dropdown-toggle {
+  outline: 0;
 }
-.redes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.nav-link {
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.redes img{
-    margin:0.2em;
+
+.text-end {
+  padding-left: 15px;
 }
-}*/
+
+#logoAP {
+  width: 120px;
+}
+
+li>a:hover {
+  color: #E226FC !important;
+}

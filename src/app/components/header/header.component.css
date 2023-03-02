@@ -1,15 +1,29 @@
-div{
-    background-color:cornflowerblue;
-}
-app-social{
-    float: right;
-    margin-top: 25px;
-}
-.container-fluid{
-     margin: 0;
-        padding: 0;
-        overflow-x: hidden; 
-}
-/*.row{
-    margin: 0;
-}*/
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+  
+  .text-small {
+    font-size: 85%;
+  }
+  
+  .dropdown-toggle {
+    outline: 0;
+  }
+  
+  .nav-link {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .text-end {
+    padding-left: 15px;
+  }
+  
+  #logoAP {
+    width: 120px;
+  }
+  
+  li>a:hover {
+    color: #E226FC !important;
+  }

@@ -85,22 +85,8 @@ export class EditAcercaDeComponent implements OnInit {
           this.imgUrl = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
-      this.uploadImage(event, "perfil");
+      this.imagenService.subirArchivo(event, "perfil");
   }
-  }
-
-  uploadImage($event: any, seccion: string){
-    const id = this.activatedRoute.snapshot.params['id'];
-    const fechaHora = new Date();
-    const archivoImg = fechaHora.getFullYear().toString() + fechaHora.getMonth().toString() + fechaHora.getDay().toString()
-                      + fechaHora.getHours().toString() + fechaHora.getMinutes().toString() + fechaHora.getSeconds().toString();
-    const nombre = seccion + "_" + archivoImg;
-    
-    this.imagenService.subirArchivo($event, nombre);
-    /*this.imagenService.uploadImage($event, nombre);*/
-    /*this.imgUrl = this.imagenService.url;
-    console.log(this.imgUrl);
-    this.persona.imgperfil = this.imagenService.url;*/
   }
 
 

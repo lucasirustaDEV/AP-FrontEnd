@@ -1,4 +1,4 @@
-<app-logo-ap></app-logo-ap>
+<app-header></app-header>
 <div class="container">
     <div class="row card mat-card seccion">
         <div class="cabecera">
@@ -6,27 +6,46 @@
         </div>
 
         <div class="items">
-            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" [formGroup]="form">
                 <div class="row g-0 rounded overflow-hidden flex-md-row mb-0 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <div class="form-group mb-3">
-                            <label for="nombre">Nombre del Proyecto</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="proyecto.nombre" required>
+                            <label for="nombre" class="form-label">Nombre del Proyecto</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="proyecto.nombre" required maxlength="25"
+                                formControlName="nombre" [ngClass]="{
+                                    'is-invalid': Nombre?.errors && Nombre?.touched,
+                                    'is-valid': !Nombre?.errors && Nombre?.touched
+                                }">
+                                <div *ngIf="Nombre?.errors && Nombre?.touched">
+                                    <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                                        El campo no puede quedar vacío.
+                                    </p>
+                                </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="descripcion">Descripción del Proyecto</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcion" required></textarea>
+                            <label for="descripcion" class="form-label">Descripción del Proyecto</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="proyecto.descripcion" required maxlength="200"
+                            formControlName="descripcion" [ngClass]="{
+                                'is-invalid': Descripcion?.errors && Descripcion?.touched,
+                                'is-valid': !Descripcion?.errors && Descripcion?.touched
+                              }">
+                              <div *ngIf="Descripcion?.errors && Descripcion?.touched">
+                                <p *ngIf="Descripcion?.hasError('required')" class="text-danger">
+                                  El campo no puede quedar vacío.
+                                </p>
+                              </div>
+                            </textarea>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="imgproyecto">Cargar Imagen del Proyecto</label>
-                            <input type="file" class="form-control" id="imgpproyecto" name="imgproyecto" (change)="mostrarImagen($event)" accept=".jpg, .jpeg, .png" />
+                            <label for="imgproyecto" class="form-label">Cargar Imagen del Proyecto</label>
+                            <input type="file" class="form-control" id="imgproyecto" name="imgproyecto"  formControlName="imgproyecto" (change)="mostrarImagen($event)" accept=".jpg, .jpeg, .png" />
                         </div>
                         <div class="form-group">
-                            <label for="link">Link al Proyecto</label>
-                            <div class="input-group mb-3">
-                                <input type="url" class="form-control card-text mb-auto lead" style="text-align: left"
-                                    id="link" name="link" [(ngModel)]="proyecto.linkproyecto" placeholder="http://ejemplo.com"/>
-                            </div>
+                            <label for="linkproyecto" class="form-label">Link al Proyecto</label>
+                            <!-- <div class="input-group mb-3"> -->
+                                <input type="url" class="form-control card-text mb-auto lead" style="text-align: left" formControlName="linkproyecto"
+                                    id="linkproyecto" name="linkproyecto" [(ngModel)]="proyecto.linkproyecto" placeholder="http://ejemplo.com"/>
+                            <!-- </div> -->
                         </div>
                     </div>
                     <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg centrado">
@@ -34,9 +53,11 @@
                     </div>
  
                 </div>
-                <button class="btn btn-primary mb-3">
-                    Modificar
-                </button>
+                <div class="ps-4">
+                    <button class="btn btn-primary mb-3 mt-3" type="submit" [disabled]="f.invalid">
+                        Modificar
+                    </button>
+                </div>
             </form>
 
         </div>

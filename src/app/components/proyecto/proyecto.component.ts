@@ -30,7 +30,7 @@ export class ProyectoComponent implements OnInit {
   }
 
   delete(id?: number){
-    var resultado = window.confirm('¿Está seguro de eliminar el ítem?');
+    var resultado = window.confirm('¿Está seguro de eliminar el proyecto?');
     if (resultado === true) {
     if(id != undefined){
       this.proyectoS.delete(id).subscribe(

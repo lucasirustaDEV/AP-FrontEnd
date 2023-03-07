@@ -47,7 +47,7 @@ export class EducacionComponent implements OnInit {
         data => {
           this.cargarEducacion();
         }, err => {
-          alert("No se pudo eliminar");
+          alert("No se pudo eliminar el ítem.");
         }
       )
     }

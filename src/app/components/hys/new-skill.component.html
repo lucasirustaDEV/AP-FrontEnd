@@ -1,19 +1,39 @@
-<app-logo-ap></app-logo-ap>
+<app-header></app-header>
 <div class="container container shadow py-2">
     <div class="row mat-card seccion">
         <div class="cabecera">
             <h4 class="col-auto" id="perfil">Agregar Habilidad</h4>
         </div>
         <div class="items">
-            <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="row g-3 justify-content-between">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm" class="row g-3 justify-content-between" [formGroup]="form">
                 <div class="form-group col-md-6">
-                    <label for="nombre">Habilidad</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required maxlength="25">
+                    <label for="nombre" class="form-label">Habilidad</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required maxlength="25"
+                    formControlName="nombre" [ngClass]="{
+                        'is-invalid': Nombre?.errors && Nombre?.touched,
+                        'is-valid': !Nombre?.errors && Nombre?.touched
+                      }">
+                      <div *ngIf="Nombre?.errors && Nombre?.touched">
+                        <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                          El campo no puede quedar vacío.
+                        </p>
+                      </div>
                 </div>
                 <div class="form-group col-md-2">
-                    <label for="porcentaje">Porcentaje</label>
-                    <input type="number" class="form-control" id="porcentaje" name="porcentaje" [(ngModel)]="porcentaje" required maxlength="3">
+                    <label for="porcentaje" class="form-label">Porcentaje</label>
+                    <input type="number" class="form-control" id="porcentaje" name="porcentaje" [(ngModel)]="porcentaje" required maxlength="3" 
+                    formControlName="porcentaje" [ngClass]="{
+                        'is-invalid': Porcentaje?.errors && Porcentaje?.touched,
+                        'is-valid': !Porcentaje?.errors && Porcentaje?.touched
+                      }">
+                      <div *ngIf="Porcentaje?.errors && Porcentaje?.touched">
+                        <p *ngIf="Porcentaje?.errors?.['max'] || Porcentaje?.errors?.['min']" class="text-danger">
+                          Valores comprendidos entre 0 y 100.
+                        </p>
+                      </div>
+
                 </div>
+
                 <div class="text-center col-sm-4 col-md-4 col-lg-4 circulo">
                     <circle-progress
                     [percent]="(porcentaje)"
@@ -35,11 +55,11 @@
                     [responsive]="true"
                     [titleColor]="'#FFFFFF'"
                     [titleFontSize]="'8px'"
-                  ></circle-progress>
+                    class=" form-group"></circle-progress>
             
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
                         Agregar
                     </button>
                 </div>

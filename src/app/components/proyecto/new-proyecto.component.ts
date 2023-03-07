@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Proyecto } from 'src/app/models/proyecto';
 import { ImagenService } from 'src/app/service/imagen.service';
@@ -11,6 +12,8 @@ import { ProyectoService } from 'src/app/service/proyecto.service';
 })
 export class NewProyectoComponent implements OnInit {
 
+  form: FormGroup;
+
   nombre: string;
   descripcion: string;
   imgproyecto: string;
@@ -18,37 +21,54 @@ export class NewProyectoComponent implements OnInit {
 
   imgUrl: string = "";
 
-  link: string = "https://firebasestorage.googleapis.com/v0/b/portfolio-lucas-ap.appspot.com/o/imagenes%2F_20230518210?alt=media&token=db593c97-2118-40ed-b8ca-05940a809f2a";
- 
-
   constructor(
     private proyectoS: ProyectoService, 
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public imagenService: ImagenService
-    ) { }
+    public imagenService: ImagenService,
+    private formBuilder: FormBuilder,
+    ) { 
+      this.form = this.formBuilder.group(
+        {
+          nombre:['', [Validators.required]],
+          descripcion:['', [Validators.required]],
+          linkproyecto:[''],
+          imgproyecto:[''],
+        }
+      )
+    }
 
   ngOnInit(): void {
   }
 
-  contar(){
-    console.log(this.link.length);
+  get Nombre(){
+    return this.form.get('nombre');
+  }
+  get Descripcion(){
+    return this.form.get('descripcion');
   }
 
-  onCreate(){
-    console.log(this.imagenService.url)
-    console.log(this.imagenService.url.length)
-    this.imgproyecto = this.imagenService.url;
-    const proyecto = new Proyecto(this.nombre, this.descripcion, this.imgproyecto, this.linkproyecto);
-    this.proyectoS.save(proyecto).subscribe(
-      data => {
-        alert("Proyecto agregado");
-        this. router.navigate(['']);
-      }, err => {
-        alert("falló");
-        this.router.navigate(['']);
+  onCreate() {
+    if (this.form.valid) {
+      if (this.imagenService.url !== "") {
+        this.imgproyecto = this.imagenService.url;
+      } else {
+        this.imgproyecto = "https://firebasestorage.googleapis.com/v0/b/portfolio-lucas-ap.appspot.com/o/imagenes%2Fproyectos.png?alt=media&token=8ec8e515-96d1-4315-9d46-bb048ea37a50"
       }
-    )
+      const proyecto = new Proyecto(this.nombre, this.descripcion, this.imgproyecto, this.linkproyecto);
+     this.proyectoS.save(proyecto).subscribe(
+        data => {
+          alert("Proyecto agregado con éxito.");
+          this.router.navigate(['']);
+        }, err => {
+          alert("Fallo al agregar proyecto.");
+          this.router.navigate(['']);
+        }
+      )
+    } else {
+      alert ("Datos insuficientes para agregar el proyecto.");
+      this.router.navigate(['']);
+    }
   }
 
   mostrarImagen(event: any){
@@ -58,19 +78,9 @@ export class NewProyectoComponent implements OnInit {
           this.imgUrl = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
-      this.uploadImage(event, "");
+      this.imagenService.subirArchivo(event, "pry");
   }
   }
 
-  uploadImage($event: any, seccion: string){
-    const id = this.activatedRoute.snapshot.params['id'];
-    const fechaHora = new Date();
-    const archivoImg = fechaHora.getFullYear().toString() + fechaHora.getMonth().toString() + fechaHora.getDay().toString()
-                      + fechaHora.getHours().toString() + fechaHora.getMinutes().toString() + fechaHora.getSeconds().toString();
-    const nombre = seccion + "_" + archivoImg;
-    
-    this.imagenService.subirArchivo($event, nombre);
-
-  }
 
 }

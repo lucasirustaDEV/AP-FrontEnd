@@ -38,6 +38,7 @@ export class EditExperienciaComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.imagenService.url = "";
     const id = this.activatedRouter.snapshot.params['id'];
     this.sExperiencia.detail(id).subscribe(
       data => {

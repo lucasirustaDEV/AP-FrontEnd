@@ -39,6 +39,7 @@ export class NewProyectoComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.imagenService.url = "";
   }
 
   get Nombre(){

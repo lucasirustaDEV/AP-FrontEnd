@@ -39,6 +39,7 @@ export class EditEducacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.imagenService.url = "";
     const id = this.activatedRoute.snapshot.params['id'];
     this.educacionS.detail(id).subscribe(
       data => {

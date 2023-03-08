@@ -9,9 +9,9 @@ export class persona {
     mail: string;
     ocupacion: string;
     imgBanner: string;
-    idDomicilio: number;
+    domicilio: string;
 
-    constructor (nombre: string, apellido: string, edad: number, acerca: string, imgperfil: string, fechaNac: Date, mail: string, ocupacion: string, imgBanner: string, idDomicilio: number) {
+    constructor (nombre: string, apellido: string, edad: number, acerca: string, imgperfil: string, fechaNac: Date, mail: string, ocupacion: string, imgBanner: string, domicilio: string) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -21,6 +21,6 @@ export class persona {
         this.mail = mail;
         this.ocupacion = ocupacion;
         this.imgBanner = imgBanner;
-        this.idDomicilio = idDomicilio;
+        this.domicilio = domicilio;
     }
 }

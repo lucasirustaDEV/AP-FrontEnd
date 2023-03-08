@@ -5,71 +5,114 @@
                 <h4 class="col-auto" id="perfil">Editar Perfil</h4>
             </div>
             <div class="items">
-                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="row g-3">
+                <form (ngSubmit)="onUpdate()" novalidate #f="ngForm" class="row g-3" [formGroup]="form">
                     <div class="col-md-6 form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="persona.nombre" required>
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="persona.nombre" maxlength="50" required
+                        formControlName="nombre" [ngClass]="{
+                            'is-invalid': Nombre?.errors && Nombre?.touched,
+                            'is-valid': !Nombre?.errors && Nombre?.touched
+                        }">
+                        <div *ngIf="Nombre?.errors && Nombre?.touched">
+                            <p *ngIf="Nombre?.hasError('required')" class="text-danger">
+                                El campo no puede quedar vacío.
+                            </p>
+                        </div>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="persona.apellido" required>
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="persona.apellido" maxlength="50" required
+                        formControlName="apellido" [ngClass]="{
+                            'is-invalid': Apellido?.errors && Apellido?.touched,
+                            'is-valid': !Apellido?.errors && Apellido?.touched
+                        }">
+                        <div *ngIf="Apellido?.errors && Apellido?.touched">
+                            <p *ngIf="Apellido?.hasError('required')" class="text-danger">
+                                El campo no puede quedar vacío.
+                            </p>
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="ocupacion">Ocupación</label>
-                      <input type="text" class="form-control" id="ocupacion" name="ocupacion" [(ngModel)]="persona.ocupacion" required>
+                      <label for="ocupacion" class="form-label">Ocupación</label>
+                      <input type="text" class="form-control" id="ocupacion" name="ocupacion" [(ngModel)]="persona.ocupacion" maxlength="80" required
+                      formControlName="ocupacion" [ngClass]="{
+                        'is-invalid': Ocupacion?.errors && Ocupacion?.touched,
+                        'is-valid': !Ocupacion?.errors && Ocupacion?.touched
+                    }">
+                    <div *ngIf="Ocupacion?.errors && Ocupacion?.touched">
+                        <p *ngIf="Ocupacion?.hasError('required')" class="text-danger">
+                            El campo no puede quedar vacío.
+                        </p>
+                    </div>
                   </div>
                     <div class="form-group col-md-6">
-                      <label for="mail">Dirección de mail</label>
-                      <input type="mail" class="form-control" id="mail" name="mail" [(ngModel)]="persona.mail" required>
+                      <label for="mail" class="form-label">Dirección de mail</label>
+                      <input type="mail" class="form-control" id="mail" name="mail" [(ngModel)]="persona.mail" maxlength="50" required
+                      formControlName="mail" [ngClass]="{
+                        'is-invalid': Mail?.errors && Mail?.touched,
+                        'is-valid': !Mail?.errors && Mail?.touched
+                    }">
+                    <div *ngIf="Mail?.errors && Mail?.touched">
+                        <p *ngIf="Mail?.hasError('required')" class="text-danger">
+                            El campo no puede quedar vacío.
+                        </p>
+                    </div>
                   </div>
                   <div class="form-group col-12">
-                    <label for="acerca">Acerca de...</label>
-                    <input type="text" class="form-control" id="acerca" name="acerca" [(ngModel)]="persona.acerca" required>
+                    <label for="acerca" class="form-label">Acerca de...</label>
+                    <input type="text" class="form-control" id="acerca" name="acerca" [(ngModel)]="persona.acerca" maxlength="150" required
+                    formControlName="acerca" [ngClass]="{
+                        'is-invalid': Acerca?.errors && Acerca?.touched,
+                        'is-valid': !Acerca?.errors && Acerca?.touched
+                    }">
+                    <div *ngIf="Acerca?.errors && Acerca?.touched">
+                        <p *ngIf="Acerca?.hasError('required')" class="text-danger">
+                            El campo no puede quedar vacío.
+                        </p>
+                    </div>
                 </div>
                     <div class="form-group date col-md-3">
-                        <label for="fechaNac">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechaNac" name="fechaNac" [(ngModel)]="persona.fechaNac" (change)="actualizarEdad()" required>
+                        <label for="fechaNac" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNac" name="fechaNac" [(ngModel)]="persona.fechaNac" (change)="actualizarEdad()" required
+                        formControlName="fechaNac" [ngClass]="{
+                            'is-invalid': FechaNac?.errors && FechaNac?.touched,
+                            'is-valid': !FechaNac?.errors && FechaNac?.touched
+                        }">
+                        <div *ngIf="FechaNac?.errors && FechaNac?.touched">
+                            <p *ngIf="FechaNac?.hasError('required')" class="text-danger">
+                                El campo no puede quedar vacío.
+                            </p>
+                        </div>
                     </div>
                     <div class="form-group col-md-1">
-                        <label for="edad">Edad</label>
-                        <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="persona.edad" required disabled readonly>
+                        <label for="edad" class="form-label">Edad</label>
+                        <input type="number" class="form-control" id="edad" name="edad" formControlName="edad" [(ngModel)]="persona.edad" required readonly >
                     </div>
                     <div class="form-group col-md-4">
-                      <label for="ubicacion">Provincia</label>
-                      <input type="text" class="form-control" id="ubicacion" name="ubicacion" [(ngModel)]="persona.idDomicilio" required>
+                      <label for="domicilio" class="form-label">Ubicación</label>
+                      <input type="text" class="form-control" id="domicilio" name="domicilio" [(ngModel)]="persona.domicilio" placeholder="Ciudad, Provincia" maxlength="50" required
+                      formControlName="domicilio" [ngClass]="{
+                        'is-invalid': Domicilio?.errors && Domicilio?.touched,
+                        'is-valid': !Domicilio?.errors && Domicilio?.touched
+                    }">
+                    <div *ngIf="Domicilio?.errors && Domicilio?.touched">
+                        <p *ngIf="Domicilio?.hasError('required')" class="text-danger">
+                            El campo no puede quedar vacío.
+                        </p>
+                    </div>
                   </div>
-                    <div class="form-group col-md-4">
-                        <label for="ubicacion">Ciudad</label>
-                        <select id="ubicacion" class="form-select">
-                          <option selected>Seleccionar...</option>
-                          <option>...</option>
-                        </select>
-                    </div>
-
-
-                    
-                    <div class="form-group col-md-8">
-                        <label for="imgperfil">Cambiar Imagen de Perfil</label>
-                         <!--<input type="file" class="form-control" id="imgperfil" name="imgperfil" (change)="uploadImage($event, 'perfil')" -->
-                        <input type="file" class="form-control" id="imgperfil" name="imgperfil" (change)="mostrarImagen($event)"
-                        accept=".jpg, .jpeg, .png">
-                    </div>
-                    <!--
-                    <div class="form-group col-md-6">
-                        <label for="imgbanner">Link Imagen Banner Superior</label>
-                        <input type="file" class="form-control" id="imgbanner" name="imgbanner" [(ngModel)]="persona.imgBanner" (change)="uploadImage($event, 'banner')"
-                        accept=".jpg, .jpeg, .png">
-                    </div>
                    
-                    <div class="col-md-4 text-center">
-                      <img [src]="persona.imgperfil" width="200px" alt="" class="" id="fotodeperfil">
-                    </div>  
-                     -->
+                    <div class="form-group col-md-8">
+                        <label for="imgperfil" class="form-label">Cambiar Imagen de Perfil</label>
+                        <input type="file" class="form-control" id="imgperfil" name="imgperfil" formControlName="imgperfil" (change)="mostrarImagen($event)"
+                        accept=".jpg, .jpeg, .png">
+                    </div>
+
                     <div class="col-md-4 text-center">
                         <img [src]="imgUrl" *ngIf="imgUrl" width="200px" alt="" class="" id="fotodeperfil">
                     </div>  
                     <div class="text-center">
-                        <button class="btn btn-primary" [disabled]="isDisabled">
+                        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">
                             Editar perfil
                         </button>
                     </div>

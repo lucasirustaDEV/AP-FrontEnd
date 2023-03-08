@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { persona } from 'src/app/models/persona.model';
 import { ImagenService } from 'src/app/service/imagen.service';
@@ -12,20 +13,36 @@ import { PersonaService } from 'src/app/service/persona.service';
 
 export class EditAcercaDeComponent implements OnInit {
 
+  form: FormGroup;
+
   persona: persona = null;
 
   imgUrl: string = "";
-
-  isDisabled = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private personaService: PersonaService,
     private router: Router,
-    public imagenService: ImagenService
-  ) { }
+    public imagenService: ImagenService,
+    private formBuilder: FormBuilder,
+  ) { 
+    this.form = this.formBuilder.group(
+      {
+        nombre:['', [Validators.required]],
+        apellido:['', [Validators.required]],
+        ocupacion:['', [Validators.required]],
+        mail:['', [Validators.required]],
+        acerca:['', [Validators.required]],
+        fechaNac:['', [Validators.required]],
+        edad:[''],
+        domicilio:['', [Validators.required]],
+        imgperfil:[''],
+      }
+    )
+  }
 
   ngOnInit(): void {
+    this.imagenService.url = "";
     const id = this.activatedRoute.snapshot.params['id'];
 
     this.personaService.detail(id).subscribe(
@@ -39,28 +56,54 @@ export class EditAcercaDeComponent implements OnInit {
     )
   }
 
-  onUpdate(): void{
+  get Nombre(){
+    return this.form.get('nombre');
+  }
+  get Apellido(){
+    return this.form.get('apellido');
+  }
+  get Ocupacion(){
+    return this.form.get('ocupacion');
+  }
+  get Mail(){
+    return this.form.get('mail');
+  }
+  get Acerca(){
+    return this.form.get('acerca');
+  }
+  get FechaNac(){
+    return this.form.get('fechaNac');
+  }
+  get Domicilio(){
+    return this.form.get('domicilio');
+  }
 
-    const id = this.activatedRoute.snapshot.params['id'];
+  onUpdate(): void {
+    if (this.form.valid) {
+      const id = this.activatedRoute.snapshot.params['id'];
 
-    console.log(this.imagenService.url);
+      if (this.persona.edad < 0) {
+        alert("Error en la facha de nacimiento.");
+        document.getElementById("fechaNac").focus();
+      } else {
+        if (this.imagenService.url !== "") {
+          this.persona.imgperfil = this.imagenService.url;
+        }
 
-    if (this.imagenService.url !== ""){
-      this.persona.imgperfil = this.imagenService.url;
-    }  
-    
-    this.persona.fechaNac = new Date(this.persona.fechaNac);
-    this.persona.fechaNac.setMinutes(this.persona.fechaNac.getMinutes() + this.persona.fechaNac.getTimezoneOffset());
+        this.persona.fechaNac = new Date(this.persona.fechaNac);
+        this.persona.fechaNac.setMinutes(this.persona.fechaNac.getMinutes() + this.persona.fechaNac.getTimezoneOffset());
 
 
-    this.personaService.update(id, this.persona).subscribe(
-      data => {
-        this.router.navigate(['']);
-      }, err => {
-        alert("Error al modificar");
-        this.router.navigate(['']);
+        this.personaService.update(id, this.persona).subscribe(
+          data => {
+            this.router.navigate(['']);
+          }, err => {
+            alert("Error al modificar");
+            this.router.navigate(['']);
+          }
+        )
       }
-    )
+    }
   }
 
   calcularEdad(fecha: Date) {

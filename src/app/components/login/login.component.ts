@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/models/login-usuario';
 import { AuthService } from 'src/app/service/auth.service';
@@ -10,6 +11,9 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  form: FormGroup;
+
   isLogged = false;
   isLogginFail = false;
   loginUsuario!: LoginUsuario;
@@ -18,7 +22,19 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   errMsj!: string;
 
-  constructor(private tokenService: TokenService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private tokenService: TokenService, 
+    private authService: AuthService, 
+    private router: Router,
+    private formBuilder: FormBuilder,
+  ) { 
+    this.form = this.formBuilder.group(
+      {
+        nombreUsuario:['', [Validators.required]],
+        password:['', [Validators.required]],
+      }
+    )
+  }
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){
@@ -26,6 +42,13 @@ export class LoginComponent implements OnInit {
       this.isLogginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
+  }
+
+  get NombreUsuario(){
+    return this.form.get('nombreUsuario');
+  }
+  get Password(){
+    return this.form.get('password');
   }
 
   onLogin(): void {
@@ -42,7 +65,11 @@ export class LoginComponent implements OnInit {
         this.isLogged = false;
         this.isLogginFail = true;
         this.errMsj = err.error.mensaje;
-        console.log(this.errMsj);
+        /* console.log(this.errMsj); */
+        alert("Acceso no autorizado.");
+        this.nombreUsuario = "";
+        this.password = "";
+        document.getElementById("nombreUsuario").focus();
       })
   }
 

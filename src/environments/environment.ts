@@ -14,8 +14,9 @@ export const environment = {
   },
   production: false,
 
+  URL: 'https://ap-backend-y4l9.onrender.com'
   /*URL: 'https://ap-backend-production.up.railway.app/'*/
-  URL: 'http://localhost:8080/'
+  /* URL: 'http://localhost:8080/' */
 
 
 };
